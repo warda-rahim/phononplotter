@@ -13,9 +13,6 @@ parser = argparse.ArgumentParser(
 parser.add_argument('-b', '--band', metavar='bandpath', nargs='+',
                     default='band.yaml',
                     help='path to Phonopy (band_).yaml')
-parser.add_argument('-d', '--dos', metavar='dospath', nargs='+',
-                    default='partial_dos.dat',
-                    help='path to Phonopy (partial_dos_).dat')
 parser.add_argument('--bandcolours', metavar='Band colours', nargs='+',
                     default=['#5A8D03', '#E75480', '#FF6600'],
                     help='colours for the band')
@@ -25,12 +22,6 @@ parser.add_argument('--bandlabels', metavar='legend labels for bands', nargs='+'
 parser.add_argument('--linestyles', metavar='line styles', nargs='+', 
                     default=['-', '--', '-.'],
                     help='linestyles for phonon dispersions for different supercells')
-parser.add_argument('--doscolours', metavar='Dos colours', nargs='+',
-                    default=['#5A8D03', '#E75480', '#FF6600'],
-                    help='colours for the pDoS')
-parser.add_argument('--doslabels', metavar='legend labels for dos', nargs='+',
-                    default='',
-                    help='legend labels for phonon density of states plot')
 parser.add_argument('-o', '--output', metavar='output file suffix',
                     default='',
                     help='suffix to add at the end of output file')
@@ -150,7 +141,7 @@ mpl.rcParams['axes.linewidth'] = 2
 
 if len(args.band) > 1:
     fig, ax = plt.subplots(figsize=(16, 12))
-    plt.subplots_adjust(left = 0.12, right = 0.8, top  = 0.97, bottom = 0.1)
+    plt.subplots_adjust(left = 0.12, right = 0.75, top  = 0.97, bottom = 0.1)
 else:
     fig, ax = plt.subplots(figsize=(12.6, 12))
     plt.subplots_adjust(left = 0.15, right = 0.95, top  = 0.97, bottom = 0.1)

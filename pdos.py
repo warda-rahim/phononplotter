@@ -82,5 +82,5 @@ ax.set_yticks([])
 ax.set_xlabel('Frequency (THz)', fontsize=50)
 ax.set_ylabel('pDoS', fontsize=50)
  
-plt.savefig('dos{}.pdf'.format(args.output) if args.output is not None else 'dos.pdf')
-plt.savefig('dos{}.png'.format(args.output) if args.output is not None else 'dos.png')
+plt.savefig('pdos{}.pdf'.format(args.output) if args.output is not None else 'pdos.pdf')
+plt.savefig('pdos{}.png'.format(args.output) if args.output is not None else 'pdos.png')
