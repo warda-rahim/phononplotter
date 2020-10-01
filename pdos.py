@@ -43,16 +43,16 @@ def add_dos(axis, dosfile, atomnum, colours, labels):
   data = np.loadtxt(dosfile)
 
   y = []
-  y.extend([] for i in range(len(atomnum)))
-
+  
   data2 = data[:,1:]
-  for i, j in enumerate(atomnum):
-      if j > 1:
-          y[i].extend([sum(data2[:,k] for k in range(j))])
-      data2 = data2[:,j:]
- 
+  iatom = 0
+  for i in atomnum:
+      y.append(data2[:,iatom:i+iatom].sum(axis=1))
+      iatom += i
+  
   for i in range(len(y)):
-      axis.plot(data[:,0], y[i][0], color=colours[i], label=labels[i], linestyle='-')
+      axis.plot(data[:,0], y[i], color=colours[i], label=labels[i], linestyle='-')
+  
 
   return axis
 

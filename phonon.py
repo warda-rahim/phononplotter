@@ -46,14 +46,6 @@ def add_band(axis, bandfiles, colours, labels, linestyles):
         :obj:'matplotlib.pyplot': Axis with Phonon Dispersion.
     """
 
-    #bandfiles = []
-
-    #for root, dir, files in os.walk(path):
-        #for name in files:
-            #if name.endswith('yaml'):
-                #bandfiles.append(name)
-
-
     data = []
     for i in bandfiles:
         with open(i, 'r') as f:

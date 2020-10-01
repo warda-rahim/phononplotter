@@ -7,9 +7,6 @@ import pandas as pd
 
 parser = argparse.ArgumentParser(
          description='Plots phonon dispersion and/or phonon density of states')
-#parser.add_argument('-b', '--band', metavar='bandpath',
-#                    default=os.getcwd(),
-#                    help='path to Phonopy (band_).yaml')
 parser.add_argument('-b', '--band', metavar='bandpath',
                     default='band.yaml',
                     help='path to Phonopy (band_).yaml')
@@ -64,23 +61,6 @@ def add_band(axis, bandfile, colour, linestyle):
     Returns:
         :obj:'matplotlib.pyplot': Axis with Phonon Dispersion.
     """
-
-    #bandfiles = []
-
-    #for root, dir, files in os.walk(path):
-        #for name in files:
-            #if name.endswith('yaml'):
-                #bandfiles.append(name)
-
-
-    #with open(bandfile, 'r') as f:
-     #   data = yaml.safe_load(f)
-
-    #dists = []
-    #eigenvalues = []
-    #dists.append([i['distance'] for i in data['phonon']])
-    #for point in data['phonon']:
-     #   eigenvalues.append([e['frequency'] for e in point['band']])
 
     l = []
     p = []
@@ -142,23 +122,21 @@ def add_dos(axis, dosfile, atomnum, colours, labels):
   data = np.loadtxt(dosfile)
 
   y = []
-  y.extend([] for i in range(len(atomnum)))
 
   data2 = data[:,1:]
-  for i, j in enumerate(atomnum):
-      if j > 1:
-          y[i].extend([sum(data2[:,k] for k in range(j))])
-      data2 = data2[:,j:]
+  iatom = 0
+  for i in atomnum:
+      y.append(data2[:,iatom:i+iatom].sum(axis=1))
+      iatom += i
 
   axis.set_xticks([])
   axis.set_yticks([])
   axis.set_ylim(bottom=0, top=1.05 * np.max(eigenvalues))
 
   for i in range(len(y)):
-      axis.plot(y[i][0], data[:,0], color=colours[i], label=labels[i], linestyle='-')
+      axis.plot(y[i], data[:,0], color=colours[i], label=labels[i], linestyle='-')
 
   return axis
-
 
 
 import matplotlib as mpl
