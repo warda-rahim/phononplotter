@@ -28,6 +28,15 @@ The following examples are provided to illustrate the outputs of the code:
 * [*Bi2Sn2O7*](./Example_plots) Reproduces plots for some of the calculations in [Ref. 2](#Ref2).
 
 
+Requirements
+------------
+
+<li> <a href="https://numpy.org/">NumPy</a>
+<li> <a href="https://matplotlib.org/">Matplotlib</a>
+<li> <a href="https://www.h5py.org/">H5py</a>
+<li> <a href="https://wiki.python.org/moin/YAML">YAML</a>
+
+
 References
 ----------
 1. <a name="Ref1"></a> A. Togo and I. Tanaka, "First Principles Phonon Calculations in Materials Science", Scripta Materialia, **108**, 1 (**2015**), DOI: [10.1016/j.scriptamat.2015.07.021](https://doi.org/10.1016/j.scriptamat.2015.07.021)
